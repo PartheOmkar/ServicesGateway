@@ -1,0 +1,14 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: EMPLOYEES
+        uri: lb://EMPLOYEES
+        predicates:
+        - Path=/employee/*** 
+        
+      - id: LEAVEMANAGEMENT
+        uri: lb://LEAVEMANAGEMENT
+        predicates:
+        - Path=/**        
