@@ -1,4 +1,8 @@
 
+
+server:
+  port: 9095
+  
 spring:
   cloud:
     gateway:
@@ -6,9 +10,28 @@ spring:
       - id: EMPLOYEES
         uri: lb://EMPLOYEES
         predicates:
-        - Path=/employee/*** 
+        - Path=/employees/** 
         
       - id: LEAVEMANAGEMENT
         uri: lb://LEAVEMANAGEMENT
         predicates:
-        - Path=/**        
+        - Path=/leave/**        
+
+  application:
+    name: API-GATEWAY
+    
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+
+
+
+
